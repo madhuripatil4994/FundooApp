@@ -7,20 +7,24 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
