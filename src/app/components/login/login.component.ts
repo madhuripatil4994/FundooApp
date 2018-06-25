@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,Validators}  from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,15 +9,28 @@ import {FormGroup,FormBuilder,Validators}  from '@angular/forms';
 
 
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  model : any=[];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private router: Router) { }
+  ngOnInit() { }
+  
+  email = new FormControl(null, [Validators.required,Validators.email]);
+  password = new FormControl(null,Validators.required);
 
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.email]],
-      password: [null, Validators.required],
-    });
+  getErrorForEmail(){
+    return this.email.hasError('required') ? 'Email Cannot be blank' : 
+    this.email.hasError('email') ? 'Please provide proper email' : '';
   }
 
+  getErrorForPassword(){
+    return this.password.hasError('required') ? 'Password Cannot be blank' : '';
+  }
+ 
+  login(){
+    console.log("inside login");
+    if(this.model.email && this.model.password != undefined){
+      console.log("inside if");
+    this.router.navigate(['home']);
+  }
+  }
 }

@@ -1,0 +1,64 @@
+<div>
+<mat-toolbar style="background-color:#fb0;" id="toolbar">
+<button mat-button class="mat-icon-button" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+</button>
+<h1>Google Keep</h1>
+<span fxFlex="5"></span>
+
+<div class="search">
+  <button mat-button class="mat-icon-button">
+    <span><mat-icon><font color="black">search</font></mat-icon></span>
+    <span fxFlex="5"><input  type="search" placeholder="Search....." ></span>
+  </button>
+</div>
+
+<span fxFlex="50"></span>
+
+<div>
+    <button mat-button class="mat-icon-button">
+      <mat-icon>refresh</mat-icon>
+      <!-- <mat-tooltip>refresh</mat-tooltip> -->
+    </button>
+  </div>
+
+<div>
+  <button mat-button class="mat-icon-button">
+    <mat-icon>view_stream</mat-icon>
+  </button>
+</div>
+<span fxFlex></span>
+<div>
+    <button mat-button class="mat-icon-button">
+      <mat-icon>apps</mat-icon>
+    </button>
+  </div>
+  <span fxFlex="2"></span>
+
+  <div>
+      <button mat-button class="mat-icon-button">
+        <mat-icon>notifications_none</mat-icon>
+      </button>
+    </div>
+    <span fxFlex="2"></span>
+
+    <div>
+        <button mat-button class="mat-icon-button">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </div>
+</mat-toolbar>  
+
+</div>
+
+<mat-sidenav-container >
+    <mat-sidenav  opened #drawer class="sidenav"[mode]="screenWidth > 840 ? 'side' : 'over'" style="width: 234px;">
+          <div fxLayout="column">
+        fjghfdgjhfdgjfdhg
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content style="height:100vh;">
+      
+  <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

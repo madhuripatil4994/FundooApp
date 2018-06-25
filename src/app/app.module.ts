@@ -8,7 +8,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import {ReactiveFormsModule} from '@angular/forms';
+import { AppMaterial } from './appmaterial.module';
+import { HomeComponent } from './components/home/home.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from './../environments/environment';
 
 @NgModule({
   declarations: [
@@ -16,6 +21,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     RegisterComponent,
     LoginComponent,
     ForgotPasswordComponent,
+    HomeComponent
     
   ],
   imports: [
@@ -24,7 +30,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    AppMaterial,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

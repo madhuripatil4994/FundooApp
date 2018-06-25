@@ -3,35 +3,51 @@
         <center>
             <h4 class="card-title">Register</h4>
         </center>
-        <form  [formGroup]="form">
-        <div class="md-form">
+
+        <form #registerForm="ngForm" (ngSubmit)="register(model)" >
+            <div>
                 <i class="fa fa-user prefix grey-text"></i>
-                <input mdbInputDirective type="text" id="form1" class="form-control validate" formControlName="name">
-                <label for="form1">Enter name</label>
-            </div>        
-        <div class="md-form">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input mdbInputDirective type="email" id="form2" class="form-control validate" formControlName="email">
-            <label for="form2"  data-error-message="Please enter a valid email" data-success="right">Enter Email</label>
-        </div>
-        <div class="md-form">
-            <i class="fa fa-lock prefix grey-text"></i>
-            <input mdbInputDirective type="password" id="form3" class="form-control validate" formControlName="password">
-            <label for="form3" data-error="wrong" data-success="right">Enter password</label>
-        </div>
-        <div class="md-form">
-            <i class="fa fa-lock prefix grey-text"></i>
-            <input mdbInputDirective type="password" id="form4" class="form-control validate" formControlName="cpassword">
-            <label for="form4" data-error="wrong" data-success="right">Confirm password</label>
-        </div>
-        <div class="md-form">
-                <i class="	fa fa-address-book-o prefix grey-text"></i>
-                <input mdbInputDirective type="tel" id="form5" class="form-control validate" formControlName="contact">
-                <label for="form5" data-error="wrong" data-success="right">Contact No</label>
-            </div>        
-        <center>
-        <button class="registerBtn btn aqua-gradient btn-rounded waves-effect waves-light" routerLink="/login">Register</button>
-        </center>
+                <mat-form-field style="width: 280px;margin-left: 15px;"> 
+                    <input type="text" matInput placeholder="Name" [formControl]="name" [(ngModel)]="model.name" required>
+                    <mat-error *ngIf="name.invalid">{{getErrorForName()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <mat-form-field  style="width: 280px;margin-left: 15px;">
+                    <input type="email" matInput placeholder="Email" [formControl]="email" [(ngModel)]="model.email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorForEmail()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <i class="fa fa-lock prefix grey-text"></i>
+                <mat-form-field  style="width: 280px;margin-left: 15px;">
+                    <input type="password" matInput placeholder="Password" [formControl]="password" [(ngModel)]="model.password" required>
+                    <mat-error *ngIf="password.invalid">{{getErrorForPassword()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <i class="fa fa-lock prefix grey-text"></i>
+                <mat-form-field  style="width: 280px;margin-left: 15px;">
+                    <input type="password" matInput placeholder="Confirm Password" [formControl]="cpassword" [(ngModel)]="model.cpassword"  required>
+                    <mat-error *ngIf="cpassword.invalid">{{getErrorForCpassword()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o prefix grey-text"></i>
+                <mat-form-field  style="width: 280px;margin-left: 15px;">
+                    <input type="text" matInput placeholder="Contact No" [formControl]="contact" [(ngModel)]="model.contact" required>
+                    <mat-error *ngIf="contact.invalid">{{getErrorForContact()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <center>
+                <button type="submit" class="registerBtn btn aqua-gradient btn-rounded waves-effect waves-light" >Register</button>
+            </center>
         </form>
     </div>
 </div>

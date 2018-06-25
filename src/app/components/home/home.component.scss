@@ -1,0 +1,23 @@
+.search {
+    padding-left: 10px;
+    position: relative;
+    color: #aaa;
+    font-size: 16px;
+    
+  }
+  .searchIcon{
+      margin-top: 18%;
+  }
+  .search input {
+    border: none;
+    text-indent: 10px;
+    width: 615px;
+    height: 40px;
+  }
+  #toolbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%  !important;
+  }
