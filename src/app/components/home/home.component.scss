@@ -3,10 +3,11 @@
     position: relative;
     color: #aaa;
     font-size: 16px;
+    background-color: white;
     
   }
   .searchIcon{
-      margin-top: 18%;
+      margin-top: 50px;
   }
   .search input {
     border: none;
@@ -20,4 +21,10 @@
     left: 0;
     z-index: 2;
     width: 100%  !important;
+  }
+  .signOutCard{
+    width: 300px;
+    height: 200px;
+    margin-top: 245px;
+    margin-left:-304px;
   }

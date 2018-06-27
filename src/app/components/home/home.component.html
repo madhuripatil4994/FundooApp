@@ -1,64 +1,109 @@
 <div>
-<mat-toolbar style="background-color:#fb0;" id="toolbar">
-<button mat-button class="mat-icon-button" (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
-</button>
-<h1>Google Keep</h1>
-<span fxFlex="5"></span>
-
-<div class="search">
-  <button mat-button class="mat-icon-button">
-    <span><mat-icon><font color="black">search</font></mat-icon></span>
-    <span fxFlex="5"><input  type="search" placeholder="Search....." ></span>
-  </button>
-</div>
-
-<span fxFlex="50"></span>
-
-<div>
-    <button mat-button class="mat-icon-button">
-      <mat-icon>refresh</mat-icon>
-      <!-- <mat-tooltip>refresh</mat-tooltip> -->
+  <mat-toolbar style="background-color:#fb0;" id="toolbar" [ngStyle]="changeToolbarColor()">
+    <button mat-button class="mat-icon-button" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
-  </div>
+    <h1>Google Keep</h1>
+    <span fxFlex="5"></span>
 
-<div>
-  <button mat-button class="mat-icon-button">
-    <mat-icon>view_stream</mat-icon>
-  </button>
-</div>
-<span fxFlex></span>
-<div>
-    <button mat-button class="mat-icon-button">
-      <mat-icon>apps</mat-icon>
-    </button>
-  </div>
-  <span fxFlex="2"></span>
-
-  <div>
+    <div class="search">
       <button mat-button class="mat-icon-button">
+        <span>
+          <mat-icon>
+            <font color="black">search</font>
+          </mat-icon>
+        </span>
+      </button>
+
+        <span fxFlex="5">
+          <input type="search" placeholder="Search.....">
+        </span>
+    </div>
+
+    <span fxFlex="50"></span>
+
+    <div>
+      <button mat-button class="mat-icon-button" matTooltip="refresh">
+        <mat-icon>refresh</mat-icon>
+        
+      </button>
+    </div>
+
+    <div>
+      <button mat-button class="mat-icon-button" matTooltip="List View">
+        <mat-icon>view_stream</mat-icon>
+      </button>
+    </div>
+    <span fxFlex="5"></span>
+    <div>
+      <button mat-button class="mat-icon-button" matTooltip="Google Apps">
+        <mat-icon>apps</mat-icon>
+      </button>
+    </div>
+    <span fxFlex="2"></span>
+
+    <div>
+      <button mat-button class="mat-icon-button" matTooltip="notifications">
         <mat-icon>notifications_none</mat-icon>
       </button>
     </div>
     <span fxFlex="2"></span>
 
     <div>
-        <button mat-button class="mat-icon-button">
-          <mat-icon>account_circle</mat-icon>
-        </button>
-      </div>
-</mat-toolbar>  
+      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="showHide()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+
+    <div [hidden]="!isVisible">
+      <mat-card class="signOutCard">
+        hi madhuri
+      </mat-card>
+    </div>
+  </mat-toolbar>
 
 </div>
 
-<mat-sidenav-container >
-    <mat-sidenav  opened #drawer class="sidenav"[mode]="screenWidth > 840 ? 'side' : 'over'" style="width: 234px;">
-          <div fxLayout="column">
-        fjghfdgjhfdgjfdhg
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content style="height:100vh;">
-      
-  <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container>
+  <mat-sidenav opened #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'over'" style="width: 234px;">
+   
+        <div style="margin-top: 60px;">
+          <button mat-button style="width: 100%;height: 50px;">
+            <img src="/assets/images/note1.svg">
+            <span fxFlex>Notes</span>
+          </button>
+          <button mat-button style="width: 100%;height: 50px;">
+            <mat-icon>touch_app</mat-icon>
+            <span fxFlex>Reminders</span>
+          </button>
+        </div>
+
+        <mat-divider></mat-divider>
+
+       <div>
+          <p>Labels</p>
+            <button mat-button matSuffix style="width: 15px;height: 31px;">
+              Edit
+            </button>
+          <button mat-button style="width: 100%;height: 50px;">
+            <mat-icon>add</mat-icon>
+            <span fxFlex>Create new label</span>
+          </button>
+        </div>
+
+        <div>
+          <button mat-button style="width: 100%;height: 50px;">
+            <mat-icon>archive</mat-icon>
+            <span fxFlex>Archive</span>
+          </button>
+
+          <button mat-button style="width: 100%;height: 50px;">
+            <mat-icon>delete</mat-icon>
+            <span fxFlex>Trash</span>
+          </button>
+        </div>   
+  </mat-sidenav>
+  <mat-sidenav-content style="height:100vh;">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

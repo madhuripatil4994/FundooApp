@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,28 +10,34 @@ import { Router } from '@angular/router';
 
 
 export class LoginComponent implements OnInit {
-  model : any=[];
+  model: any = [];
+  userRef;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private firebase: AngularFireDatabase) {
+    this.userRef = firebase.list('users')
+  }
   ngOnInit() { }
-  
-  email = new FormControl(null, [Validators.required,Validators.email]);
-  password = new FormControl(null,Validators.required);
 
-  getErrorForEmail(){
-    return this.email.hasError('required') ? 'Email Cannot be blank' : 
-    this.email.hasError('email') ? 'Please provide proper email' : '';
+  email = new FormControl(null, [Validators.required, Validators.email]);
+  password = new FormControl(null, Validators.required);
+
+  getErrorForEmail() {
+    return this.email.hasError('required') ? 'Email Cannot be blank' :
+      this.email.hasError('email') ? 'Please provide proper email' : '';
   }
 
-  getErrorForPassword(){
+  getErrorForPassword() {
     return this.password.hasError('required') ? 'Password Cannot be blank' : '';
   }
- 
-  login(){
-    console.log("inside login");
-    if(this.model.email && this.model.password != undefined){
-      console.log("inside if");
-    this.router.navigate(['home']);
+
+  login() {
+    this.firebase.list('/users',
+     ref => ref.orderByChild('Email').equalTo(this.model.email)).valueChanges().subscribe(res=>
+    {
+      console.log(res);
+    })
+
+  
   }
-  }
+
 }

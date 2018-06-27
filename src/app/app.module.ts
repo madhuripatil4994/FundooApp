@@ -14,6 +14,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './../environments/environment';
+import { NoteCardComponent } from './components/note-card/note-card.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { environment } from './../environments/environment';
     RegisterComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    NoteCardComponent,
+    TrashComponent
     
   ],
   imports: [
