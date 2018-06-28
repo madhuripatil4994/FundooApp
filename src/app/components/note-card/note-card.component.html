@@ -29,26 +29,34 @@
       <input matInput placeholder="Take a note......" [(ngModel)]="model.noteDesc">
     </mat-form-field>
     <div fxLayout="row">
-      <button mat-icon-button>
-        <img src="/assets/images/touch_app.svg">
-      </button>
-      <button mat-icon-button>
-        <img src="/assets/images/addUser.svg">
-      </button>
-      <button mat-icon-button>
-        <img src="/assets/images/color.svg">
-      </button>
-      <button mat-icon-button>
-        <img src="/assets/images/image.svg">
-      </button>
-      <button mat-icon-button>
-        <img src="/assets/images/archieve.svg">
-      </button>
-      <button mat-icon-button>
-        <img src="/assets/images/more.svg">
-      </button>
+      <app-note-icons></app-note-icons>
       <button mat-button (click)="hideNote();createNote(model)"> Close
       </button>
     </div>
   </mat-card>
 </div>
+
+<div style="margin-left: 400px;" >
+
+    <mat-card style="margin:5px;" *ngFor="let note of notesArray" fxFlex="30" >
+      <div fxLayout="row">
+        <button mat-icon-button style="margin-left: -30px;margin-top: -28px">
+          <mat-icon>check_circle_outline</mat-icon>
+        </button>
+
+        <button mat-icon-button style="margin-top: -28px;margin-left: 180px;">
+          <img src="/assets/images/pin.svg">
+        </button>
+      </div>
+      <mat-card-title>
+        <mat-card-title-text>
+          <font size="4">{{note.Notetitle}}</font>
+        </mat-card-title-text>
+      </mat-card-title>
+      <mat-card-content>
+        {{note.NoteDesc}}
+      </mat-card-content>
+      
+      <app-note-icons></app-note-icons>
+  </mat-card>
+ </div>

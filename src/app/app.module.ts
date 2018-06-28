@@ -18,6 +18,7 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { NoteIconsComponent } from './components/note-icons/note-icons.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ArchiveComponent } from './components/archive/archive.component';
     NoteCardComponent,
     TrashComponent,
     RemindersComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    NoteIconsComponent
     
   ],
   imports: [
