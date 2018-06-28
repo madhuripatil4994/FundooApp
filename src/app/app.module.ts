@@ -16,6 +16,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './../environments/environment';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { TrashComponent } from './components/trash/trash.component';
     ForgotPasswordComponent,
     HomeComponent,
     NoteCardComponent,
-    TrashComponent
+    TrashComponent,
+    RemindersComponent,
+    ArchiveComponent
     
   ],
   imports: [

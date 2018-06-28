@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { firestore } from 'firebase';
 import {AngularFireDatabase} from 'angularfire2/database';
 @Component({
   selector: 'app-register',

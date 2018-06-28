@@ -3,7 +3,7 @@
     <button mat-button class="mat-icon-button" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1>Google Keep</h1>
+    <h1>{{changeToolbarColor().title}}</h1>
     <span fxFlex="5"></span>
 
     <div class="search">
@@ -68,11 +68,11 @@
   <mat-sidenav opened #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'over'" style="width: 234px;">
    
         <div style="margin-top: 60px;">
-          <button mat-button style="width: 100%;height: 50px;">
+          <button mat-button style="width: 100%;height: 50px;" (click)="goToHome()">
             <img src="/assets/images/note1.svg">
             <span fxFlex>Notes</span>
           </button>
-          <button mat-button style="width: 100%;height: 50px;">
+          <button mat-button style="width: 100%;height: 50px;" (click)="goToReminders()">
             <mat-icon>touch_app</mat-icon>
             <span fxFlex>Reminders</span>
           </button>
@@ -92,12 +92,12 @@
         </div>
 
         <div>
-          <button mat-button style="width: 100%;height: 50px;">
+          <button mat-button style="width: 100%;height: 50px;" (click)="goToArchive()">
             <mat-icon>archive</mat-icon>
             <span fxFlex>Archive</span>
           </button>
 
-          <button mat-button style="width: 100%;height: 50px;">
+          <button mat-button style="width: 100%;height: 50px;" (click)="goToTrash()">
             <mat-icon>delete</mat-icon>
             <span fxFlex>Trash</span>
           </button>

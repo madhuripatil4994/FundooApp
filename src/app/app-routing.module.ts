@@ -6,10 +6,12 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { HomeComponent } from './components/home/home.component';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 
 const routes : Routes=[
     {
-      path: '', redirectTo: 'login', pathMatch:'full' 
+      path: '', redirectTo: 'home/notes', pathMatch:'full' 
     },
     {
       path : 'register',
@@ -26,10 +28,16 @@ const routes : Routes=[
     {
       path : 'home',component : HomeComponent,children : [
         {
-          path : 'note', component:NoteCardComponent
+          path : 'notes', component:NoteCardComponent
         },
         {
           path : 'trash' ,component : TrashComponent
+        },
+        {
+          path :'reminders' ,component : RemindersComponent
+        },
+        {
+          path : 'archive', component: ArchiveComponent
         }
       ]
     }

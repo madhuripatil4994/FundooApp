@@ -1,7 +1,7 @@
 <div style="margin-top: 100px;">
   <mat-card style="width: 500px;margin-left: 400px;height: 60px;" *ngIf="note" (click)="showNote()">
     <mat-form-field style="width: 300px;margin-top: -30px;">
-      <input matInput placeholder="Take a note........" [(ngModel)]="noteText">
+      <input matInput placeholder="Take a note........" >
     </mat-form-field>
 
     <div style="float: right;margin-top: -13px;">
@@ -20,13 +20,13 @@
   </mat-card>
 
   <mat-card style="width: 500px;margin-left: 400px" *ngIf="mainnote">
-    <mat-form-field style="width: 400px;margin-top:-30px;">
-      <input matInput placeholder="Title">
+    <mat-form-field style="width: 400px;margin-top:-30px;" >
+      <input matInput placeholder="Title" [(ngModel)]="model.notetitle">
     </mat-form-field>
 
     <img src="/assets/images/pin.svg" matTooltip="Pin Note" class="pinIcon">
     <mat-form-field style="width: 400px;margin-top: -30px;">
-      <input matInput placeholder="Take a note......">
+      <input matInput placeholder="Take a note......" [(ngModel)]="model.noteDesc">
     </mat-form-field>
     <div fxLayout="row">
       <button mat-icon-button>
@@ -47,7 +47,7 @@
       <button mat-icon-button>
         <img src="/assets/images/more.svg">
       </button>
-      <button mat-button (click)="hideNote()"> Close
+      <button mat-button (click)="hideNote();createNote(model)"> Close
       </button>
     </div>
   </mat-card>
