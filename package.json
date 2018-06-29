@@ -30,7 +30,7 @@
     "firebase": "^4.13.1",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

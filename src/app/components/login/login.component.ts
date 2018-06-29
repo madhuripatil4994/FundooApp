@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,13 +32,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.firebase.list('/users',
-     ref => ref.orderByChild('Email').equalTo(this.model.email)).valueChanges().subscribe(res=>
-    {
-      console.log(res);
-    })
-
-  
+   this.firebase.list('/users', 
+    ref => ref.orderByChild("Email").equalTo('madhuri@gmail.com')).valueChanges();
+   
   }
 
 }
