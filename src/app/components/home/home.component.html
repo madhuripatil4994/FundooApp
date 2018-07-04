@@ -58,9 +58,12 @@
     <div [hidden]="!isVisible">
       <mat-card class="signOutCard">
        <div>
-         <input type="file" (change)="profilePicUpload($event)" />
+         <div id="profile-container" (click)="fileInput.click()">
+          <input  #fileInput type="file" (change)="profilePicUpload($event)" style="display:none;"/>
+          <img src="{{imageUrl}}" >
+        </div>
           <br><br>
-            <span><p style="font-size:16px;margin-left:116px;margin-top:-71px;"><strong>{{name}}</strong></p>
+            <span><p style="font-size:16px;margin-left:116px;margin-top:-180px;"><strong>{{name}}</strong></p>
                 <p style="font-size:12px;margin-left:116px;margin-top: -27px;">{{email}}</p>
                 </span>
        </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireStorage } from 'angularfire2/storage'
-// import { finalize } from 'rxjs/operators';
-// import {Observable} from 'rxjs'
+import { AngularFireDatabase } from 'angularfire2/database';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +15,9 @@ export class HomeComponent implements OnInit {
   public name: string;
   // uploadPercent: Observable<number>;
   // downloadURL: Observable<string>;
-  constructor(private router: Router, private storageRef: AngularFireStorage) {
+  constructor(private router: Router,
+     private storageRef: AngularFireStorage,
+      private firebase : AngularFireDatabase) {
     this.changeToolbarColor();
   }
   ngOnInit() { }
@@ -77,17 +80,36 @@ export class HomeComponent implements OnInit {
     this.email = localStorage.getItem('email')
     this.name = localStorage.getItem('Name')
   }
-  profilePicUpload(){
-    
+  selectedFile: FileList
+  file: File
+  imgSrc;
+
+ 
+  profilePicUpload(event) {
+
+    this.selectedFile = event.target.files;
+    if (this.selectedFile.item(0)) {
+      this.uploadPic();
+    }
+  }
+  userKey = localStorage.getItem('userKey');
+  uploadPic() {
+    let file = this.selectedFile.item(0);
+    let uniqueKey = 'pic' + Math.floor(Math.random() * 1000000);
+    const uploadTask = this.storageRef.upload('profileImages/' + uniqueKey, file);
+    let imageUrl;
+    uploadTask.then((data)=>{
+      imageUrl=data.downloadURL;
+      var update = {
+        ImageUrl : imageUrl
+      }
+      let users = this.firebase.list('users');
+      users.update(this.userKey,update);
+    })
+        
   }
 
-  // profilePicUpload(event){
-  //   var file = event.target.files[0];
-  //   console.log(file);
-  //   const filePath = '/profileImages/' + file;
-  //   const ref = this.storageRef.ref(filePath);
-  //   const task = ref.put(file);    
-  // }
 
-  
+
+
 }
