@@ -50,14 +50,20 @@
     <span fxFlex="2"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="showHide()">
+      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="getData();showHide()">
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>
 
     <div [hidden]="!isVisible">
       <mat-card class="signOutCard">
-        hi madhuri
+       <div>
+         <input type="file" (change)="profilePicUpload($event)" />
+          <br><br>
+            <span><p style="font-size:16px;margin-left:116px;margin-top:-71px;"><strong>{{name}}</strong></p>
+                <p style="font-size:12px;margin-left:116px;margin-top: -27px;">{{email}}</p>
+                </span>
+       </div>
       </mat-card>
     </div>
   </mat-toolbar>

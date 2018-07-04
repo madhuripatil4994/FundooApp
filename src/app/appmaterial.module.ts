@@ -59,6 +59,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSelectModule,
     MatDialogModule,
     MatTableModule
+    
   ]
 })
 

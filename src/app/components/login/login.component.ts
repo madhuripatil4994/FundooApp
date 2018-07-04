@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database'
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { AngularFireDatabase } from 'angularfire2/database'
 export class LoginComponent implements OnInit {
   model: any = [];
   userRef;
-
+  users;
+  data: any;
   constructor(private router: Router, private firebase: AngularFireDatabase) {
     this.userRef = firebase.list('users')
   }
@@ -32,9 +34,24 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-   this.firebase.list('/users', 
-    ref => ref.orderByChild("Email").equalTo('madhuri@gmail.com')).valueChanges();
-   
+    this.firebase.list('users',ref =>
+  ref.orderByChild('Email').equalTo(this.model.email)).snapshotChanges().pipe(map(items => {            // <== new way of chaining
+      return items.map(user => {
+        this.data = user.payload.val() || {};
+        this.data.key = user.payload.key;
+        localStorage.setItem("userKey",this.data.key)
+        return this.data;
+      });
+    })).subscribe(res => {
+      this.users = res;
+      this.users.forEach(element => {
+        if (element.Password === this.model.password) {
+          localStorage.setItem('email',element.Email)
+          localStorage.setItem('Name', element.Name)
+          this.router.navigate(['home/notes'])
+        }
+      });
+    })
   }
 
 }

@@ -1,3 +1,57 @@
-<p>
-  archive works!
-</p>
+<div style="margin-top: 100px;margin-left: 400px;">
+  <div *ngFor="let note of notesArray">
+    <div *ngIf="note.isArchive === true">
+      <mat-card style="margin:5px;margin-top: 15px;"  fxFlex="30">
+        <div fxLayout="row">
+          <button mat-icon-button style="margin-left: -30px;margin-top: -28px">
+            <mat-icon>check_circle_outline</mat-icon>
+          </button>
+  
+          <button mat-icon-button style="margin-top: -28px;margin-left: 180px;" (click)="isPinNote(note,note.key)">
+            <img src="/assets/images/pin.svg">
+          </button>
+        </div>
+          <mat-card-title>
+              <mat-card-title-text>
+                <font size="4">{{note.Notetitle}}</font>
+              </mat-card-title-text>
+            </mat-card-title>
+            <mat-card-content>
+              {{note.NoteDesc}}
+            </mat-card-content>
+
+            <div fxLayout="row">
+              <button mat-icon-button>
+                <img src="/assets/images/touch_app.svg">
+              </button>
+          
+              <button mat-icon-button>
+                <img src="/assets/images/addUser.svg">
+              </button>
+          
+              <button mat-icon-button>
+                <img src="/assets/images/color.svg">
+              </button>
+          
+              <button mat-icon-button>
+                <img src="/assets/images/image.svg">
+              </button>
+          
+              <button mat-icon-button (click)="isArchiveNote(note,note.key)">
+                <img src="/assets/images/unarchive.svg">
+              </button>
+          
+              <button mat-icon-button [matMenuTriggerFor]="menu" >
+                <img src="/assets/images/more.svg" />
+              </button>
+              <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialog()">Add Label</button>
+                  <button mat-menu-item>Copy Note</button>
+                  <button mat-menu-item (click)="isPinNote(note,note.key);isTrashNote(note,note.key)">Delete Note</button>
+                </mat-menu>
+          
+            </div>
+          </mat-card>
+          </div>
+    </div>
+  </div>

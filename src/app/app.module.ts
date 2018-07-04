@@ -12,9 +12,10 @@ import { AppMaterial } from './appmaterial.module';
 import { HomeComponent } from './components/home/home.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './../environments/environment';
-import { NoteCardComponent } from './components/note-card/note-card.component';
+import {NoteComponent} from './components/note/note.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { ArchiveComponent } from './components/archive/archive.component';
@@ -26,11 +27,10 @@ import { ArchiveComponent } from './components/archive/archive.component';
     LoginComponent,
     ForgotPasswordComponent,
     HomeComponent,
-    NoteCardComponent,
+    NoteComponent,
     TrashComponent,
     RemindersComponent,
     ArchiveComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -41,10 +41,12 @@ import { ArchiveComponent } from './components/archive/archive.component';
     AppMaterial,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents :[HomeComponent]
 })
 export class AppModule { }

@@ -12,7 +12,7 @@ export const environment = {
     authDomain: "keep-36c8f.firebaseapp.com",
     databaseURL: "https://keep-36c8f.firebaseio.com",
     projectId: "keep-36c8f",
-    storageBucket: "",
+    storageBucket: "keep-36c8f.appspot.com",
     messagingSenderId: "807845235526"
   }
  

@@ -56,7 +56,8 @@ export class RegisterComponent implements OnInit {
         Name : this.model.name,
         Email : this.model.email,
         Password : this.model.password,
-        Contact :this.model.contact
+        Contact :this.model.contact,
+        ImageUrl : ''
       })
     this.route.navigate(['login']);
   }
