@@ -13,8 +13,7 @@ export class HomeComponent implements OnInit {
   public isVisible: boolean = false;
   public email: string;
   public name: string;
-  // uploadPercent: Observable<number>;
-  // downloadURL: Observable<string>;
+  imageUrl;
   constructor(private router: Router,
      private storageRef: AngularFireStorage,
       private firebase : AngularFireDatabase) {
@@ -76,15 +75,22 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/home/archive']);
   }
 
+  goToLogin(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
+
+  goToRegister(){
+    this.router.navigate(['register']);
+  }
+
   getData() {
     this.email = localStorage.getItem('email')
     this.name = localStorage.getItem('Name')
+    this.imageUrl = localStorage.getItem('image')
   }
   selectedFile: FileList
   file: File
-  imgSrc;
-
- 
   profilePicUpload(event) {
 
     this.selectedFile = event.target.files;
@@ -93,6 +99,7 @@ export class HomeComponent implements OnInit {
     }
   }
   userKey = localStorage.getItem('userKey');
+  
   uploadPic() {
     let file = this.selectedFile.item(0);
     let uniqueKey = 'pic' + Math.floor(Math.random() * 1000000);

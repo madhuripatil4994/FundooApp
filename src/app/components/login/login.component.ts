@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
         if (element.Password === this.model.password) {
           localStorage.setItem('email',element.Email)
           localStorage.setItem('Name', element.Name)
+          localStorage.setItem('image',element.ImageUrl)
           this.router.navigate(['home/notes'])
         }
       });

@@ -24,23 +24,48 @@
   }
   .signOutCard{
     width: 300px;
-    height: 200px;
+    height: 250px;
     margin-top: 245px;
     margin-left:-304px;
   }
   #profile-container {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     overflow: hidden;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
+    margin: 0px 0px 0px 0px ;
   }
   
   #profile-container img {
     width: 150px;
     height: 150px;
   }
-  
+  .googleProfile{
+    color:blue;
+    margin-left:120px;
+    margin-top:-50px;
+    font-size:12px;
+  }
+  .name{
+    font-size:16px;
+    margin-left:116px;
+    margin-top:-150px;
+  }
+  .email{
+    font-size:12px;
+    margin-left:116px;
+    margin-top: -27px;
+  }
+  .buttons{
+   border: 1px solid #c6c6c6;
+   color:#666;
+  }
+  .accBtn{
+    background-color: #4d90fe; 
+    margin-left: 124px;
+    color: #fff;
+  }

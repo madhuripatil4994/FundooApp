@@ -55,24 +55,35 @@
       </button>
     </div>
 
+    <!-- ======================== signout card ===========================-->
     <div [hidden]="!isVisible">
       <mat-card class="signOutCard">
-       <div>
          <div id="profile-container" (click)="fileInput.click()">
-          <input  #fileInput type="file" (change)="profilePicUpload($event)" style="display:none;"/>
-          <img src="{{imageUrl}}" >
+          <img src={{imageUrl}} >
         </div>
-          <br><br>
-            <span><p style="font-size:16px;margin-left:116px;margin-top:-180px;"><strong>{{name}}</strong></p>
-                <p style="font-size:12px;margin-left:116px;margin-top: -27px;">{{email}}</p>
-                </span>
-       </div>
+        <input  #fileInput type="file" (change)="profilePicUpload($event)" style="display:none;"/>
+          <br>
+            <span><p class="name"><strong>{{name}}</strong></p>
+                <p class="email">{{email}}</p>
+                <a href="" class="pointer" class="googleProfile">Google+ Profile</a>
+            &nbsp;&nbsp;<a href="" class="pointer" style="color:blue;font-size: 12px;">Privacy</a>
+            <br><br>
+            </span>      
+                <button mat-button class="accBtn">Google Account</button>
+            <mat-divider></mat-divider>
+            <div>
+                <button mat-button class="buttons" (click)="goToRegister()">Add Account</button>
+                 <span style="float: right;">
+                <button mat-button class="buttons" (click)="goToLogin()">Sign Out</button>
+              </span>
+            </div>
       </mat-card>
     </div>
   </mat-toolbar>
 
 </div>
 
+<!--=================== sidenav ====================-->
 <mat-sidenav-container>
   <mat-sidenav opened #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'over'" style="width: 234px;">
    
