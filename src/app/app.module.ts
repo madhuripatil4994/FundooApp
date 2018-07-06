@@ -19,6 +19,8 @@ import {NoteComponent} from './components/note/note.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { UpdateNoteComponent } from './components/update-note/update-note.component';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ArchiveComponent } from './components/archive/archive.component';
     NoteComponent,
     TrashComponent,
     RemindersComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -42,11 +45,12 @@ import { ArchiveComponent } from './components/archive/archive.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [  {provide:MAT_DIALOG_DATA,useValue:{}}],
   bootstrap: [AppComponent],
-  entryComponents :[HomeComponent]
+  entryComponents :[HomeComponent,UpdateNoteComponent]
 })
 export class AppModule { }

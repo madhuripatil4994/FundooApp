@@ -27,7 +27,6 @@ export class TrashComponent implements OnInit {
       });
     })).subscribe(res => {
       this.notesArray = res;
-      console.log("Notes:  ", this.notesArray);      
     })
   }
 

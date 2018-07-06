@@ -1,0 +1,26 @@
+[data-text]:empty::before {
+    content: attr(data-text);
+    color: #555; 
+}
+
+[data-text]:empty {
+    content: "";
+    outline: none;
+    border: none;
+}
+
+#title {
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.note-add-div {
+    padding: 0px 15px;
+    outline: none;
+}
+.labelChip :hover .labelCross{
+    display: inline;
+  }
+  .labelCross{
+    display: none;
+  }
