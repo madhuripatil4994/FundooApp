@@ -20,6 +20,7 @@ export class NoteComponent implements OnInit {
   noteRef;
   model: any = [];
   notesArray;
+  pin = "/assets/images/pin.svg";
   clock = "assets/images/clock.svg";
   backarrow = "assets/images/back.svg";
   constructor(private router: Router, private firebase: AngularFireDatabase, private dialog: MatDialog) {
@@ -68,15 +69,25 @@ export class NoteComponent implements OnInit {
           return data;
         });
       })).subscribe(res => {
-        this.notesArray = res;
-     
+        this.notesArray = res;    
       })
   }
 
   updateNote(note, key) {
- 
     this.noteRef.update(key, note);
+  }
+  isPinNote(note, key) {
     
+    debugger;
+    if (note.isPin === false) {
+      note.isPin = true;
+      this.pin = "/assets/images/unpin.svg"
+    }
+    else {
+      note.isPin = false;
+      this.pin = "/assets/images/pin.svg"
+    }
+    this.updateNote(note, key);
   }
 
   isTrashNote(note, key) {
@@ -88,16 +99,6 @@ export class NoteComponent implements OnInit {
       note.isTrash = false
     }
     this.updateNote(note, key)
-  }
-
-  isPinNote(note, key) {
-    if (note.isPin === false) {
-      note.isPin = true;
-    }
-    else {
-      note.isPin = false;
-    }
-    this.updateNote(note, key);
   }
 
   isArchiveNote(note, key) {
@@ -116,8 +117,7 @@ export class NoteComponent implements OnInit {
       width: '600px',
       panelClass: 'custom-dialog-container'
     });
-    //this.noteServiceObj.OpenUpdateComponent(note, this.labelService.allLabels);
-
+  
   }
 
   setToday(note,key) {
@@ -169,8 +169,7 @@ export class NoteComponent implements OnInit {
   }
 
   removeReminder(note,key) {
-    console.log(note)
-    note.remainder = '';
+    note.remainder = [];
    this.updateNote(note,key)
   }
   

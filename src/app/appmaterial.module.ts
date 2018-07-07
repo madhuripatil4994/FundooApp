@@ -12,7 +12,9 @@ import {
   MatNativeDateModule,
   MatSelectModule,
   MatDialogModule,
-  MatTableModule
+  MatTableModule,
+  MatTooltipModule,
+  
 
 } from '@angular/material';
 
@@ -39,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule
   ],
   exports: [
     MatInputModule,
@@ -58,7 +61,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule
     
   ]
 })

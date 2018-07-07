@@ -25,6 +25,7 @@ const routes : Routes=[
       path : 'forgotPassword',
       component : ForgotPasswordComponent
     },
+   
     {
       path : 'home',component : HomeComponent,children : [
         {

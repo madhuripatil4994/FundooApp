@@ -34,6 +34,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
     RemindersComponent,
     ArchiveComponent,
     UpdateNoteComponent
+    
   ],
   imports: [
     BrowserModule,
