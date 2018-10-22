@@ -20,8 +20,6 @@ export class DisplayNoteComponent implements OnInit {
     this.getNotes()
   }
 
-  
-
   getNotes() {
     this.firebase.list('notes').snapshotChanges().pipe(map(items => {            // <== new way of chaining
       return items.map(a => {
@@ -31,7 +29,6 @@ export class DisplayNoteComponent implements OnInit {
       });
     })).subscribe(res => {
       this.notesArray = res;
-      console.log("Notes:  ", this.notesArray);
     })
   }
 

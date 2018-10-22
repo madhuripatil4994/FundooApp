@@ -51,6 +51,7 @@ export class NoteCardComponent implements OnInit {
 
 
   getNotes() {
+    
     this.firebase.list('notes').snapshotChanges().pipe(map(items => {            // <== new way of chaining
       return items.map(a => {
         let data: any = a.payload.val() || {};
@@ -58,6 +59,9 @@ export class NoteCardComponent implements OnInit {
         return data;
       });
     })).subscribe(res => {
+      this.pinnedNotesArray =[];
+      this.notes = [];
+      this.pinned = false;      
       res.forEach(note => {
         if (note.isPin == true) {
           this.pinnedNotesArray.push(note);
@@ -66,7 +70,7 @@ export class NoteCardComponent implements OnInit {
         if (note.isPin === false && note.isTrash === false && note.isArchive === false) {
           this.notes.push(note);
         };
-      })
+      })      
     })
   }
 }
