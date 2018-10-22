@@ -1,13 +1,13 @@
 <div>
   <mat-toolbar style="background-color:#fb0;" id="toolbar" [ngStyle]="changeToolbarColor()">
-    <button mat-button class="mat-icon-button" (click)="drawer.toggle()">
+    <button mat-button class="mat-icon-button" (click)="drawer.toggle()" style="outline:none">
       <mat-icon>menu</mat-icon>
     </button>
     <h1>{{changeToolbarColor().title}}</h1>
     <span fxFlex="5"></span>
 
     <div class="search">
-      <button mat-button class="mat-icon-button">
+      <button mat-button class="mat-icon-button" outline:none>
         <span>
           <mat-icon>
             <font color="black">search</font>
@@ -23,34 +23,34 @@
     <span fxFlex="50"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="refresh">
+      <button mat-button class="mat-icon-button" matTooltip="refresh" outline:none>
         <mat-icon>refresh</mat-icon>
-        
+
       </button>
     </div>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="List View">
+      <button mat-button class="mat-icon-button" matTooltip="List View" outline:none>
         <mat-icon>view_stream</mat-icon>
       </button>
     </div>
     <span fxFlex="5"></span>
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="Google Apps">
+      <button mat-button class="mat-icon-button" matTooltip="Google Apps" outline:none>
         <mat-icon>apps</mat-icon>
       </button>
     </div>
     <span fxFlex="2"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="notifications">
+      <button mat-button class="mat-icon-button" matTooltip="notifications" outline:none>
         <mat-icon>notifications_none</mat-icon>
       </button>
     </div>
     <span fxFlex="2"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="showHide()">
+      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="showHide()" outline:none>
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>
@@ -65,14 +65,14 @@
 </div>
 
 <mat-sidenav-container>
-  <mat-sidenav opened #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'over'" style="width: 234px;">
-   
+  <mat-sidenav  #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'side'" style="width: 250px;">
+
         <div style="margin-top: 60px;">
-          <button mat-button style="width: 100%;height: 50px;" (click)="goToHome()">
+          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToHome()">
             <img src="/assets/images/note1.svg">
             <span fxFlex>Notes</span>
           </button>
-          <button mat-button style="width: 100%;height: 50px;" (click)="goToReminders()">
+          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToReminders()">
             <mat-icon>touch_app</mat-icon>
             <span fxFlex>Reminders</span>
           </button>
@@ -80,28 +80,30 @@
 
         <mat-divider></mat-divider>
 
-       <div>
-          <p>Labels</p>
-            <button mat-button matSuffix style="width: 15px;height: 31px;">
-              Edit
-            </button>
-          <button mat-button style="width: 100%;height: 50px;">
+       <div fxLayout="column">
+          <div fxLayout="row" style="margin-top:10px;">
+            <span style="position:relative">Labels</span>
+              <button mat-button class="edit-btn">
+                Edit
+              </button>
+          </div>
+          <button mat-button style="width: 100%;height: 50px;outline:none">
             <mat-icon>add</mat-icon>
             <span fxFlex>Create new label</span>
           </button>
         </div>
 
         <div>
-          <button mat-button style="width: 100%;height: 50px;" (click)="goToArchive()">
+          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToArchive()">
             <mat-icon>archive</mat-icon>
             <span fxFlex>Archive</span>
           </button>
 
-          <button mat-button style="width: 100%;height: 50px;" (click)="goToTrash()">
+          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToTrash()">
             <mat-icon>delete</mat-icon>
             <span fxFlex>Trash</span>
           </button>
-        </div>   
+        </div>
   </mat-sidenav>
   <mat-sidenav-content style="height:100vh;">
     <router-outlet></router-outlet>

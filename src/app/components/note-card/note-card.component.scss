@@ -1,0 +1,8 @@
+[data-text]:empty:before {
+    content: attr(data-text);
+  }
+  .note-text {
+    outline: none;
+    border: none;
+    padding-bottom: 25px;
+  }

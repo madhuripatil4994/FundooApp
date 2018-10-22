@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-   this.firebase.list('/users', 
+   this.firebase.list('/users',
     ref => ref.orderByChild("Email").equalTo('madhuri@gmail.com')).valueChanges();
    
   }

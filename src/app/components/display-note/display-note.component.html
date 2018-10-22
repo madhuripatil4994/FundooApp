@@ -1,0 +1,46 @@
+  <mat-card>
+    <div fxLayout="row">
+      <button mat-icon-button style="margin-top: -28px;margin-left: 180px;" (click)="isPinNote(note,note.key)">
+        <img src="/assets/images/pin.svg">
+      </button>
+    </div>
+
+    <div>
+      <font size="4">{{note.Notetitle}}</font>
+    </div>
+
+    <div> {{note.NoteDesc}}</div>
+
+    <div fxLayout="row">
+      <button mat-icon-button>
+        <img src="/assets/images/touch_app.svg">
+      </button>
+
+      <button mat-icon-button>
+        <img src="/assets/images/addUser.svg">
+      </button>
+
+      <button mat-icon-button>
+        <img src="/assets/images/color.svg">
+      </button>
+
+      <button mat-icon-button>
+        <img src="/assets/images/image.svg">
+      </button>
+
+      <button mat-icon-button (click)="isArchiveNote(note,note.key)">
+        <img src="/assets/images/archieve.svg">
+      </button>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img src="/assets/images/more.svg" />
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openDialog()" style="outline:none">Add Label</button>
+        <button mat-menu-item style="outline:none">Copy Note</button>
+        <button mat-menu-item (click)="isTrashNote(note,note.key)" style="outline:none">Delete Note</button>
+      </mat-menu>
+
+    </div>
+  </mat-card>

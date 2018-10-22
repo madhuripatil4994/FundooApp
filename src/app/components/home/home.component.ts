@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
     }
     else if (this.router.url == '/home/trash') {
       var myStyle = {
-        'background-color' : 'rgb(99, 99, 99)', 
+        'background-color' : 'rgb(99, 99, 99)',
         'color' : 'white',
         title : "Trash"
       }
@@ -67,4 +68,3 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/home/archive']);
   }
 }
-
