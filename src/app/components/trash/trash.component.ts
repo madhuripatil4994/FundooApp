@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class TrashComponent implements OnInit {
 
   noteRef;
-  notesArray;
+  notesArray =[];
   constructor(private firebase: AngularFireDatabase) {
     this.noteRef = firebase.list('notes')
 
@@ -29,9 +29,11 @@ export class TrashComponent implements OnInit {
       });
     })).subscribe(res => {
       res.forEach(note => {
-        if (note.isTrash == true)
+        if (note.isTrash === true)
           this.notesArray.push(note)
       });
+      console.log(this.notesArray);
+      
     })
   }
 }

@@ -23,34 +23,34 @@
     <span fxFlex="50"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="refresh" outline:none>
+      <button mat-button class="mat-icon-button" matTooltip="refresh" style="outline:none">
         <mat-icon>refresh</mat-icon>
 
       </button>
     </div>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="List View" outline:none>
+      <button mat-button class="mat-icon-button" matTooltip="List View" style="outline:none">
         <mat-icon>view_stream</mat-icon>
       </button>
     </div>
     <span fxFlex="5"></span>
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="Google Apps" outline:none>
+      <button mat-button class="mat-icon-button" matTooltip="Google Apps" style="outline:none">
         <mat-icon>apps</mat-icon>
       </button>
     </div>
     <span fxFlex="2"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="notifications" outline:none>
+      <button mat-button class="mat-icon-button" matTooltip="notifications" style="outline:none">
         <mat-icon>notifications_none</mat-icon>
       </button>
     </div>
     <span fxFlex="2"></span>
 
     <div>
-      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="showHide()" outline:none>
+      <button mat-button class="mat-icon-button" matTooltip="Google Account" (click)="showHide()" style="outline:none">
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>
@@ -64,17 +64,17 @@
 
 </div>
 
-<mat-sidenav-container>
-  <mat-sidenav  #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'side'" style="width: 250px;">
+<mat-sidenav-container style="background-color: #e8e8e8; height: fit-content;">
+  <mat-sidenav  #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'side'" style="width: 250px;background-color: #e8e8e8;">
 
         <div style="margin-top: 60px;">
           <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToHome()">
-            <img src="/assets/images/note1.svg">
-            <span fxFlex>Notes</span>
+            <img src="/assets/images/note1.svg" style="opacity: 0.5;">
+            <span fxFlex="30">Notes</span>
           </button>
           <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToReminders()">
-            <mat-icon>touch_app</mat-icon>
-            <span fxFlex>Reminders</span>
+            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">touch_app</mat-icon>
+            <span  fxFlex="44">Reminders</span>
           </button>
         </div>
 
@@ -87,21 +87,23 @@
                 Edit
               </button>
           </div>
-          <button mat-button style="width: 100%;height: 50px;outline:none">
-            <mat-icon>add</mat-icon>
-            <span fxFlex>Create new label</span>
+          <button  mat-button style="width: 100%;height: 50px;outline:none">
+            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">add</mat-icon>
+            <span  fxFlex="61">Create new label</span>
           </button>
         </div>
 
+        <mat-divider></mat-divider>
+
         <div>
           <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToArchive()">
-            <mat-icon>archive</mat-icon>
-            <span fxFlex>Archive</span>
+            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">archive</mat-icon>
+            <span  fxFlex="37">Archive</span>
           </button>
 
           <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToTrash()">
-            <mat-icon>delete</mat-icon>
-            <span fxFlex>Trash</span>
+            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">delete</mat-icon>
+            <span  fxFlex="33">Trash</span>
           </button>
         </div>
   </mat-sidenav>

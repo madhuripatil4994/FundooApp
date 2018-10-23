@@ -42,7 +42,8 @@ export class NoteCardComponent implements OnInit {
       NoteDesc: description,
       isTrash: false,
       isPin: false,
-      isArchive: false
+      isArchive: false,
+      reminder : ''
     })
     title = ''
     description = ''
@@ -63,7 +64,7 @@ export class NoteCardComponent implements OnInit {
       this.notes = [];
       this.pinned = false;      
       res.forEach(note => {
-        if (note.isPin == true) {
+        if (note.isPin == true && note.isTrash === false) {
           this.pinnedNotesArray.push(note);
           this.pinned = true;
         }

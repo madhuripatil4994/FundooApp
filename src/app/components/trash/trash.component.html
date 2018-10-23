@@ -1,11 +1,5 @@
-<div fxLayoutAlign="center center" fxLayout="row wrap" style="width: 100%">
+<div fxLayoutAlign="center center" fxLayout="row wrap" style="width: 100%;margin-top: 100px;">
   <div *ngFor="let notes of notesArray" fxFlex="0 0 270px" style="margin: 10px; ">
-    <div *ngIf="notes.isTrash === true">
-      <mat-card>
-        <div> {{note.Notetitle}}</div>
-        <div>{{note.NoteDesc}}</div>
-      </mat-card>
-    </div>
-
+    <app-display-note [note]="notes"> </app-display-note>  
   </div>
 </div>

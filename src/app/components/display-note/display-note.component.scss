@@ -1,0 +1,48 @@
+.note-card {
+    width: 270px;
+    padding: 0px;
+}
+.note-card:hover #hover-note-icons {
+    visibility: visible;
+
+}
+#hover-note-icons{
+    visibility: hidden;
+    width: 100%;
+    padding: 8px;
+    opacity: 0.5;
+}
+.pin-btn {
+    position: absolute;
+    right: 0;
+}
+.title-font {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 23px;
+    min-height: 38px;
+    padding: 15px 15px 0 15px;
+}
+.desc-font {
+    font-size: 14px;
+    line-height: 19px;
+    min-height: 46px;
+    padding: 12px 15px 15px 15px;
+}
+.time-reminder {
+    color: rgba(0,0,0,.54);
+    font-size: 14px;
+    right: 10px;
+    position: absolute;
+}
+.labelCross{
+    display: none;
+  }
+  
+  .labelChip :hover .labelCross{
+    display: inline;
+  }
+  .reminder-chip {
+      border-radius: 0px;
+      padding: 3px 5px;
+  }

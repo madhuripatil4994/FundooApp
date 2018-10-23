@@ -1,46 +1,99 @@
-  <mat-card>
-    <div fxLayout="row">
-      <button mat-icon-button style="margin-top: -28px;margin-left: 180px;" (click)="isPinNote(note,note.key)">
-        <img src="/assets/images/pin.svg">
-      </button>
-    </div>
+<mat-card class="note-card">
+  <div fxLayout="row">
+    <button mat-icon-button (click)="isPinNote(note,note.key)" class="pin-btn" *ngIf="!note.isTrash">
+      <img src="/assets/images/pin.svg" *ngIf="note.isPin === false" id="hover-note-icons">
+      <img src="/assets/images/unpin.svg" *ngIf="note.isPin === true">
 
-    <div>
-      <font size="4">{{note.Notetitle}}</font>
-    </div>
+    </button>
+  </div>
 
-    <div> {{note.NoteDesc}}</div>
+  <div class="title-font">
+    {{note.Notetitle}}
+  </div>
 
-    <div fxLayout="row">
-      <button mat-icon-button>
-        <img src="/assets/images/touch_app.svg">
-      </button>
+  <div class="desc-font">
+    {{note.NoteDesc}}</div>
 
-      <button mat-icon-button>
-        <img src="/assets/images/addUser.svg">
-      </button>
+    <div *ngIf="note.reminder" style="padding-left: 10px;">
+        <mat-chip-list class="labelChip">
+          <mat-chip fxLayoutGap="5px" class="reminder-chip">
+              <img src="/assets/images/clock.svg" height="20px" width="20px" style="opacity: 0.5;">
+            <span>{{note.reminder|date:'MMM dd, hh:mm a'}} &nbsp;</span>
+            <img src="/assets/images/close.svg" alt="X" class="labelCross" height="15px" (click)="removeReminder(note,note.key)">
+          </mat-chip>
+        </mat-chip-list>
+      </div>
 
-      <button mat-icon-button>
-        <img src="/assets/images/color.svg">
-      </button>
+  <div fxLayout="row" id="hover-note-icons" *ngIf="!note.isTrash">
+    <button mat-icon-button style="outline: none" [matMenuTriggerFor]="reminderMenu">
+      <img src="/assets/images/touch_app.svg">
+    </button>
 
-      <button mat-icon-button>
-        <img src="/assets/images/image.svg">
-      </button>
+    <button mat-icon-button style="outline: none">
+      <img src="/assets/images/addUser.svg">
+    </button>
 
-      <button mat-icon-button (click)="isArchiveNote(note,note.key)">
-        <img src="/assets/images/archieve.svg">
-      </button>
+    <button mat-icon-button style="outline: none">
+      <img src="/assets/images/color.svg">
+    </button>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <img src="/assets/images/more.svg" />
-      </button>
+    <button mat-icon-button style="outline: none">
+      <img src="/assets/images/image.svg">
+    </button>
 
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="openDialog()" style="outline:none">Add Label</button>
-        <button mat-menu-item style="outline:none">Copy Note</button>
-        <button mat-menu-item (click)="isTrashNote(note,note.key)" style="outline:none">Delete Note</button>
-      </mat-menu>
+    <button mat-icon-button (click)="isArchiveNote(note,note.key)" style="outline: none">
+      <img src="/assets/images/archieve.svg">
+    </button>
 
-    </div>
-  </mat-card>
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="outline: none">
+      <img src="/assets/images/more.svg" />
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog()" style="outline:none">Add Label</button>
+      <button mat-menu-item style="outline:none">Copy Note</button>
+      <button mat-menu-item (click)="isTrashNote(note,note.key)" style="outline:none">Delete Note</button>
+    </mat-menu>
+
+    <mat-menu #reminderMenu="matMenu">
+      <div style="width: 230px;">
+        <div style="padding: 8px">
+          <b>Reminder:</b>
+        </div>
+
+        <div>
+          <button (click)="todayReminder(note,note.key)" mat-menu-item style="outline: none">
+            <span style="font-size: 14px">Later today</span>
+            <span class="time-reminder">8:00PM</span>
+          </button>
+        </div>
+
+        <div>
+          <button (click)="tomorrowReminder(note,note.key)" mat-menu-item style="outline: none">
+            <span style="font-size: 14px">Tomorrow</span>
+            <span class="time-reminder">8:00AM</span>
+          </button>
+        </div>
+
+        <div>
+          <button (click)="nextWeekReminder(note,note.key)" mat-menu-item style="outline: none">
+            <span style="font-size: 14px">Next week</span>
+            <span class="time-reminder">Mon,8:00AM</span>
+          </button>
+        </div>
+      </div>
+    </mat-menu>
+
+  </div>
+
+  <div fxLayout="row" id="hover-note-icons" *ngIf="note.isTrash===true">
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="outline: none">
+      <img src="/assets/images/more.svg" />
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item style="outline:none" (click)="deleteNote(note.key)">Delete Forever</button>
+      <button mat-menu-item (click)="isTrashNote(note,note.key)" style="outline:none">Restore</button>
+    </mat-menu>
+  </div>
+</mat-card>

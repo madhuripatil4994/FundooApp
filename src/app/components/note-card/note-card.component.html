@@ -1,5 +1,5 @@
-<div style="margin-top: 100px;">
-  <mat-card style="width: 500px;margin-left: 400px;height: 60px;" *ngIf="note" (click)="showNote()">
+<div style="margin-top: 100px;" fxLayoutAlign="center center">
+  <mat-card style="width: 500px;height: 60px;" *ngIf="note" (click)="showNote()">
     <div fxLayout="row">
       <div style="width: 300px">
         <input matInput placeholder="Take a note........" readonly style="border:none">
@@ -21,7 +21,7 @@
     </div>
   </mat-card>
 
-  <mat-card style="width: 500px;margin-left: 400px" *ngIf="mainnote">
+  <mat-card style="width: 500px;" *ngIf="mainnote">
     <div contenteditable="true" name="title" data-text="Title" class="note-text " id="title"></div>
     <div contenteditable="true" name="description" data-text="Description" class="note-text " id="description"></div>
     <div fxLayout="row">
@@ -54,18 +54,15 @@
   </mat-card>
 </div>
 
-<div *ngIf="pinned">
-  Pinned
-</div>
-<div fxLayoutAlign="center center" fxLayout="row wrap" style="width: 100%">
+<div *ngIf="pinned" class="title">Pinned</div>
+<div fxLayoutAlign="center center" fxLayout="row wrap" style="width: 100%;margin-top: 25px;">
   <div *ngFor="let notes of pinnedNotesArray" fxFlex="0 0 270px" style="margin: 10px; ">
     <app-display-note [note]="notes"> </app-display-note>
   </div>
 </div>
 
-<div *ngIf="pinned">
-  Other</div>
-<div fxLayoutAlign="center center" fxLayout="row wrap" style="width: 100%">
+<div *ngIf="pinned" class="title">Other</div>
+<div fxLayoutAlign="center center" fxLayout="row wrap" style="width: 100%;margin-top: 25px;">
   <div *ngFor="let notes of notes" fxFlex="0 0 270px" style="margin: 10px; ">
     <app-display-note [note]="notes"> </app-display-note>
   </div>
