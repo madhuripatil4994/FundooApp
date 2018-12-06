@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,NO_ERRORS_SCHEMA  } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -19,6 +19,7 @@ import { TrashComponent } from './components/trash/trash.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { DisplayNoteComponent } from './components/display-note/display-note.component';
+import { UpdatenoteComponent } from './components/updatenote/updatenote.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DisplayNoteComponent } from './components/display-note/display-note.com
     TrashComponent,
     RemindersComponent,
     ArchiveComponent,
-    DisplayNoteComponent    
+    DisplayNoteComponent,
+    UpdatenoteComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +46,9 @@ import { DisplayNoteComponent } from './components/display-note/display-note.com
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  schemas: [ NO_ERRORS_SCHEMA ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [UpdatenoteComponent]
 })
 export class AppModule { }

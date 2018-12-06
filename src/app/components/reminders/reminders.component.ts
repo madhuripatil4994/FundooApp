@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reminders',
@@ -6,10 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reminders.component.scss']
 })
 export class RemindersComponent implements OnInit {
+  noteRef;
+  notesArray = [];
+  constructor(private firebase: AngularFireDatabase) {
+    this.noteRef = firebase.list('notes')
 
-  constructor() { }
+  }
 
   ngOnInit() {
+    this.getNotes()
   }
+
+  getNotes() {
+    this.firebase.list('/notes', ref => ref.orderByChild("userName").equalTo(localStorage.getItem('name'))).snapshotChanges().pipe(map(items => {            // <== new way of chaining
+      return items.map(a => {
+        let data: any = a.payload.val() || {};
+        data.key = a.payload.key;
+        return data;
+      });
+    })).subscribe(res => {
+      res.forEach(note => {
+        if (note.reminder)          
+          this.notesArray.push(note)
+      });
+      
+    })
+  }
+
 
 }

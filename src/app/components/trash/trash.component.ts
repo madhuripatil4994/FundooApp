@@ -21,7 +21,7 @@ export class TrashComponent implements OnInit {
   }
 
   getNotes() {
-    this.firebase.list('notes').snapshotChanges().pipe(map(items => {            // <== new way of chaining
+    this.firebase.list('/notes', ref => ref.orderByChild("userName").equalTo(localStorage.getItem('name'))).snapshotChanges().pipe(map(items => {            // <== new way of chaining
       return items.map(a => {
         let data: any = a.payload.val() || {};
         data.key = a.payload.key;

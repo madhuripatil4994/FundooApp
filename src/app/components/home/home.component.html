@@ -15,9 +15,9 @@
         </span>
       </button>
 
-        <span fxFlex="5">
-          <input type="search" placeholder="Search.....">
-        </span>
+      <span fxFlex="5">
+        <input type="search" placeholder="Search.....">
+      </span>
     </div>
 
     <span fxFlex="50"></span>
@@ -57,7 +57,23 @@
 
     <div [hidden]="!isVisible">
       <mat-card class="signOutCard">
-        hi madhuri
+        <div style="width:100%;">
+          <div fxLayout="row" fxLayoutGap="30px">
+            <!-- <input type="file" #fileInput /> -->
+
+            <div class="profile-photo" (click)="fileInput.click()">
+              Hi Mukesh
+            </div>
+            <div style="width:70%;">
+              <div class="name-font">
+                {{name}}
+              </div>
+              <div class="email-font">
+                {{email}}
+              </div>
+            </div>
+          </div>
+        </div>
       </mat-card>
     </div>
   </mat-toolbar>
@@ -65,48 +81,50 @@
 </div>
 
 <mat-sidenav-container style="background-color: #e8e8e8; height: fit-content;">
-  <mat-sidenav  #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'side'" style="width: 250px;background-color: #e8e8e8;">
+  <mat-sidenav #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'side'" style="width: 250px;background-color: #e8e8e8;">
 
-        <div style="margin-top: 60px;">
-          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToHome()">
-            <img src="/assets/images/note1.svg" style="opacity: 0.5;">
-            <span fxFlex="30">Notes</span>
-          </button>
-          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToReminders()">
-            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">touch_app</mat-icon>
-            <span  fxFlex="44">Reminders</span>
-          </button>
-        </div>
+    <div style="margin-top: 60px;">
+      <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToHome()">
+        <img src="/assets/images/note1.svg" style="opacity: 0.5;">
+        <span fxFlex="30">Notes</span>
+      </button>
+      <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToReminders()">
+        <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">touch_app</mat-icon>
+        <span fxFlex="44">Reminders</span>
+      </button>
+    </div>
 
-        <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
 
-       <div fxLayout="column">
-          <div fxLayout="row" style="margin-top:10px;">
-            <span style="position:relative">Labels</span>
-              <button mat-button class="edit-btn">
-                Edit
-              </button>
-          </div>
-          <button  mat-button style="width: 100%;height: 50px;outline:none">
-            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">add</mat-icon>
-            <span  fxFlex="61">Create new label</span>
-          </button>
-        </div>
+    <div fxLayout="column">
+      <div fxLayout="row" style="margin-top:10px;">
+        <span style="position:relative">Labels</span>
+        <button mat-button class="edit-btn">
+          Edit
+        </button>
+      </div>
+      <button mat-button style="width: 100%;height: 50px;outline:none">
+        <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">add</mat-icon>
+        <span fxFlex="61">Create new label</span>
+      </button>
+    </div>
 
-        <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
 
-        <div>
-          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToArchive()">
-            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">archive</mat-icon>
-            <span  fxFlex="37">Archive</span>
-          </button>
+    <div>
+      <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToArchive()">
+        <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">archive</mat-icon>
+        <span fxFlex="37">Archive</span>
+      </button>
 
-          <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToTrash()">
-            <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">delete</mat-icon>
-            <span  fxFlex="33">Trash</span>
-          </button>
-        </div>
+      <button mat-button style="width: 100%;height: 50px;outline:none" (click)="goToTrash()">
+        <mat-icon [ngStyle]="{'opacity': '0.5','margin-top':'7px'}">delete</mat-icon>
+        <span fxFlex="33">Trash</span>
+      </button>
+    </div>
   </mat-sidenav>
+  <input type="file" (change)="onFileChanged($event)" #fileInput>
+
   <mat-sidenav-content style="height:100vh;">
     <router-outlet></router-outlet>
   </mat-sidenav-content>

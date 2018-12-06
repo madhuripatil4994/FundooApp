@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
+
+import { MatDialog } from '@angular/material';
+import { UpdatenoteComponent } from '../updatenote/updatenote.component';
 import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-display-note',
   templateUrl: './display-note.component.html',
@@ -12,7 +16,7 @@ export class DisplayNoteComponent implements OnInit {
   noteRef;
   notesArray;
  
-  constructor(private router: Router, private firebase: AngularFireDatabase) {
+  constructor(private router: Router, private firebase: AngularFireDatabase,private dialog: MatDialog) {
     this.noteRef = firebase.list('notes')
   }
 
@@ -122,6 +126,18 @@ export class DisplayNoteComponent implements OnInit {
     this.updateNote(note,key)
   }
   
+  OpenUpdateComponent(note) {
+    console.log("update", note);
+    var obj = { 'note': note};
+
+    this.dialog.open(UpdatenoteComponent, {
+      data: obj,
+      width: '600px',
+      panelClass: 'custom-dialog-container'
+    });
+    //this.noteServiceObj.OpenUpdateComponent(note, this.labelService.allLabels);
+
+  }
 }
 
 

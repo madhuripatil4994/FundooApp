@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public isVisible: boolean = false;
-
-  constructor(private router: Router) {
+  public name = localStorage.getItem('name');
+  public email = localStorage.getItem('email')
+  constructor(private router: Router, private firebase: AngularFireDatabase) {
     this.changeToolbarColor();
   }
   ngOnInit() { }
@@ -67,4 +69,11 @@ export class HomeComponent implements OnInit {
   goToArchive(){
     this.router.navigate(['/home/archive']);
   }
+
+  onFileChanged(event) {
+
+    console.log('jsfsdgfjsdgfjh',event.target.files[0].name);
+    
+  }
+
 }

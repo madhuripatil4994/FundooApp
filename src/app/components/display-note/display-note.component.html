@@ -7,11 +7,11 @@
     </button>
   </div>
 
-  <div class="title-font">
+  <div class="title-font" (click)="OpenUpdateComponent(note)">
     {{note.Notetitle}}
   </div>
 
-  <div class="desc-font">
+  <div class="desc-font" (click)="OpenUpdateComponent(note)">
     {{note.NoteDesc}}</div>
 
     <div *ngIf="note.reminder" style="padding-left: 10px;">

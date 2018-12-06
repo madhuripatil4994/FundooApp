@@ -34,32 +34,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-    this.firebase.list('users').snapshotChanges().pipe(map(items => {            // <== new way of chaining
-      return items.map(a => {
-        let data: any = a.payload.val() || {};
-        data.key = a.payload.key;
-        this.userKey = data.key;
-        return data;
-      });
-    })).subscribe(res => {
-      this.users = res;
-    })
-
-
-    // this.firebase.list('/users',ref => ref.orderByChild("Email").equalTo(this.model.email)).valueChanges().subscribe(res => {
-    //     this.users = res;
-    //     var that = this;
-    //      var userData = this.users.map(function (key) {         
-    //        that.storeData(key);
-    //       });
-    // });
+    this.firebase.list('/users',ref => ref.orderByChild("Email").equalTo(this.model.email)).valueChanges().subscribe(res => {
+        this.users = res;
+        var that = this;
+         var userData = this.users.map(function (key) {  
+           console.log(key);
+           localStorage.setItem('name', key.Name);
+           localStorage.setItem('email',key.Email);    
+          });
+          if(userData) {
+            this.router.navigate(['/home/notes']);
+          }
+    });
   }
 
-  storeData(key) {
-    localStorage.setItem('email', key.Email);
-    localStorage.setItem('name', key.Name);
-    localStorage.setItem('imageUrl', key.ImageUrl);
-  }
 
 }

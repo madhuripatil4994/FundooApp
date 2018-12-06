@@ -35,4 +35,20 @@
     right: 0;
     position: absolute;
   }
-  
+  .name-font {
+    font-weight: bold;
+    margin: -4px 0 1px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .email-font {
+    color: #666;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+  }
+  .profile-photo {
+    width: 30%;
+    cursor: pointer;
+  }
